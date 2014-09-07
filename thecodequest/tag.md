@@ -1,0 +1,11 @@
+---
+layout: page
+title: Tag
+---
+{% for tag in site.tags %}
+<a name="{{ tag[0] }}"></a>
+<span class="badge">{{ tag[0] }}</span>
+{% for post in tag[1] %}
+<li><a href="{{ post.url | remove:'.html' }}">{{ post.title }}</a> ({{ post.date | date_to_string }})</li>
+{% endfor %}
+{% endfor %}
