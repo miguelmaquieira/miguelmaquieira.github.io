@@ -1,0 +1,34 @@
+# Dependencies
+markdown:         redcarpet
+highlighter:      pygments
+
+# Permalinks
+permalink:        pretty
+
+# Setup
+title:            The code quest
+tagline:          Coding for good
+url:              http://miguelmaquieira.com/tech
+baseurl:          '/'
+paginate:         5
+
+author:
+  name:			Miguel Maquieira
+  description:  Code as if the guy who ends up mantaining your code will be a violent psycopath who knows where you live.
+  picture:		http://www.gravatar.com/avatar/039746314fecaf4c7c50232d6afffa2a.png
+  url:			http://miguelmaquieira.com/tech
+  twitter:		http://twitter.com/mgmaquieira
+  feed:         http://feeds.feedburner.com/miguelmaquieira
+
+#Github vars 
+github:
+  repo:				http://github.com/miguelmaquieira/
+  page:				miguelmaquieira.github.io/
+  issue:			issues/new
+
+# Sidebars bottom
+version:			1.0.0
+company:			thecodequest.io	
+
+
+
