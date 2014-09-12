@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    
+      How to mockup ajax responses &middot; The code quest
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/thecodequest.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700|PT+Sans:400">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+</head>
+
+
+  <body>
+
+    <!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+     styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class"sidebar-item" id="author">
+    <a  class="sidebar-nav-item" id="name" href="/">Miguel Maquieira</a>
+    <div id="profilePic">
+      <img style="width: 140px;" alt="Profile Picture" src="http://www.gravatar.com/avatar/039746314fecaf4c7c50232d6afffa2a.png"></img>
+    </div>
+    <div id="description">
+      <p>Code as if the guy who ends up mantaining your code will be a violent psycopath who knows where you live.</p>
+    </div>
+  </div>
+ 
+  <nav class="sidebar-nav">
+
+    
+
+    
+    
+      
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/about/">About</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/archive/">Archive</a>
+        
+      
+    
+      
+    
+      
+        
+      
+    
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/tags/">Tags</a>
+        
+      
+    
+
+    <a class="sidebar-nav-item" href="http://github.com/miguelmaquieira/miguelmaquieira.github.io/issues/new ">Contact</a>
+  </nav>
+
+  <div class="sidebar-item">
+    <div class="social">
+      <a class="twitter" title="Twitter" href="http://twitter.com/mgmaquieira"></a>
+      <a class="github" title="GitHub" href=http://github.com/miguelmaquieira/></a>
+      <a class="rss" title="RSS" href="http://feeds.feedburner.com/miguelmaquieira"></a>
+    </div>
+  </div>
+
+  <div class="sidebar-item">
+    <p>
+      &copy; 2014. thecodequest.io v1.0.0.
+    </p>
+  </div>
+</div>
+
+
+    <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
+         content to avoid any CSS collisions with our real content. -->
+    <div class="wrap">
+      <div class="masthead">
+        <div class="container">
+          <h3 class="masthead-title">
+            <a href="/" title="Home">The code quest</a>
+            <small>Coding for good</small>
+          </h3>
+        </div>
+      </div>
+
+      <div class="container content">
+        <div class="post">
+  <h1 class="post-title">How to mockup ajax responses</h1>
+  <span class="post-date">12 Sep 2014</span>
+  <h2>The problem</h2>
+
+<p>Passive data collection from your users is every day more and more common in modern applications, but you still require to get user information proactively. Normally, sending the whole form data as a key-value map use to be enough, but sometimes you need to build more complex data structures before submiting the form. And here is when <strong>JSON</strong> came to your resque. Furthermore, multidevice applications use a SOA arquitecture approach where JSON has became an standard to share data between the UI and the business layers. Then, we show 4 different ways to prepare data for your server request using the jQuery serialization feature.</p>
+
+<h2>Technologies</h2>
+
+<ul>
+<li><a href="http://getbootstrap.com/">Bootstrap 3</a></li>
+<li><a href="http://jquery.com/">jQuery</a></li>
+<li><a href="https://github.com/appendto/jquery-mockjax">jQuery-mockjax</a></li>
+</ul>
+
+<h2>Solution</h2>
+
+<h3>Building the UI</h3>
+
+<p>Guess that we want to send user registration data to backend service. The form data structure is the following:</p>
+
+<table style="position: relative; width: 75%; margin: 0 auto; font-size: 16px;">
+    <tr>
+        <td colspan="2">
+            User:
+        </td>
+    </tr>
+    <tr>
+        <td width="50%" style="border: none;">
+            <ul>
+                <li>First name</li>
+                <li>Last name</li>
+                <li>Address</li>
+                <ul>
+                    <li>Street</li>
+                    <li>City</li>
+                    <li>Zip Code</li>
+                </ul>
+            </ul>
+        </td>
+        <td style="width: 50%; height: 100%; border: none; position: absolute">
+            <ul>
+                <li>Email</li>
+                <ul>
+                    <li>[0]</li>
+                    <li>[1]</li>
+                    <li>...</li>
+                </ul>
+            </ul>
+        </td>
+    <tr>
+</table>
+
+<p><br></p>
+
+<p>We use <strong>bootstrap</strong> to build our sig up form.</p>
+
+<p><img src="/assets/img/2014-09-10_form_bootstrap3.png"/></p>
+
+<p><a href="https://github.com/miguelmaquieira/blog-examples/blob/master/how-to-send-form-as-json-using-ajax-request/index.html" target="_blank">Click here to see the entire html code</a></p>
+
+<h4>Creating <strong>email</strong> array fields dynamically</h4>
+
+<p>1 - The entry form data must allow to add multiple emails per user. So, we create the field for the first email, and we&#39;ll also let the user add new fields if necessary.</p>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;control-group&quot;</span> <span class="na">id=</span><span class="s">&quot;emails&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;controls&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;entry input-group form-group&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;input-group-addon&quot;</span><span class="nt">&gt;</span>@<span class="nt">&lt;/span&gt;</span>
+            <span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">name=</span><span class="s">&quot;emails[0]&quot;</span> <span class="na">placeholder=</span><span class="s">&quot;add email&quot;</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;input-group-btn&quot;</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">&quot;btn btn-success btn-add&quot;</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;glyphicon glyphicon-plus&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
+                <span class="nt">&lt;/button&gt;</span>
+            <span class="nt">&lt;/span&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;small&gt;</span>Press <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;glyphicon glyphicon-plus gs&quot;</span><span class="nt">&gt;&lt;/span&gt;</span> to add another email :)<span class="nt">&lt;/small&gt;</span>
+</code></pre></div>
+<p>2 - Javascript code to add a new email entry field:</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span> <span class="s1">&#39;.btn-add&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">event</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+    <span class="kd">var</span> <span class="nx">controlForm</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;.controls&#39;</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">currentEntry</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">parents</span><span class="p">(</span><span class="s1">&#39;.entry:first&#39;</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">newEntry</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="nx">currentEntry</span><span class="p">.</span><span class="nx">clone</span><span class="p">()).</span><span class="nx">appendTo</span><span class="p">(</span><span class="nx">controlForm</span><span class="p">);</span>
+    <span class="nx">newEntry</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;input&#39;</span><span class="p">).</span><span class="nx">val</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">);</span>
+    <span class="nx">controlForm</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;.entry:not(:last) .btn-add&#39;</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">removeClass</span><span class="p">(</span><span class="s1">&#39;btn-add&#39;</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s1">&#39;btn-remove&#39;</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">removeClass</span><span class="p">(</span><span class="s1">&#39;btn-success&#39;</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s1">&#39;btn-danger&#39;</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">html</span><span class="p">(</span><span class="s1">&#39;&lt;span class=&quot;glyphicon glyphicon-minus&quot;&gt;&lt;/span&gt;&#39;</span><span class="p">);</span>
+
+    <span class="kd">var</span> <span class="nx">inputs</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;.controls .form-control&#39;</span><span class="p">);</span>
+    <span class="nx">$</span><span class="p">.</span><span class="nx">each</span><span class="p">(</span><span class="nx">inputs</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">index</span><span class="p">,</span> <span class="nx">item</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">item</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="s1">&#39;emails[&#39;</span> <span class="o">+</span> <span class="nx">index</span> <span class="o">+</span> <span class="s1">&#39;]&#39;</span><span class="p">;</span>
+    <span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>3 - And javascript code to remove an entry field:</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span> <span class="s1">&#39;.btn-remove&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">event</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+    <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">parents</span><span class="p">(</span><span class="s1">&#39;.entry:first&#39;</span><span class="p">).</span><span class="nx">remove</span><span class="p">();</span>
+    <span class="kd">var</span> <span class="nx">inputs</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;.controls .form-control&#39;</span><span class="p">);</span>
+    <span class="nx">$</span><span class="p">.</span><span class="nx">each</span><span class="p">(</span><span class="nx">inputs</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">index</span><span class="p">,</span> <span class="nx">item</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">item</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="s1">&#39;emails[&#39;</span> <span class="o">+</span> <span class="nx">index</span> <span class="o">+</span> <span class="s1">&#39;]&#39;</span><span class="p">;</span>
+    <span class="p">});</span>
+<span class="p">});</span> 
+</code></pre></div>
+<h3>Mocking the response from server</h3>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;form</span> <span class="na">id=</span><span class="s">&quot;ajaxForm&quot;</span> <span class="na">class=</span><span class="s">&quot;form-vertical&quot;</span> <span class="na">role=</span><span class="s">&quot;form&quot;</span> <span class="na">autocomplete=</span><span class="s">&quot;off&quot;</span> <span class="na">method=</span><span class="s">&quot;POST&quot;</span> <span class="na">action=</span><span class="s">&quot;/ajaxRequest/&quot;</span><span class="nt">&gt;</span>
+</code></pre></div><div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">.</span><span class="nx">mockjax</span><span class="p">({</span>
+    <span class="nx">url</span><span class="o">:</span> <span class="s1">&#39;/ajaxRequest/plainjson/&#39;</span><span class="p">,</span>
+    <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;POST&#39;</span><span class="p">,</span>
+    <span class="nx">contentType</span><span class="o">:</span> <span class="s1">&#39;text/json&#39;</span><span class="p">,</span>
+    <span class="nx">responseTime</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="nx">response</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">settings</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">settings</span><span class="p">.</span><span class="nx">data</span><span class="p">;</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">responseText</span> <span class="o">=</span> <span class="nx">data</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">});</span>  
+</code></pre></div>
+<h3>Form data JSON serialization</h3>
+
+<h3>Resources:</h3>
+
+<ul>
+    <li>
+        Test this code <a href="http://embed.plnkr.co/rTHNL0/preview" target="_blank">here</a>
+    </li>
+    <li>
+        Download source <a href="https://github.com/miguelmaquieira/blog-examples/tree/master/how-to-send-form-as-json-using-ajax-request" target="_blank">here</a>
+    </li>
+</ul>
+
+</div>
+
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/2014/09/10/how-to-send-form-data-using-jquery-ajax-request/">
+            How to sumbit form using jQuery and ajax request
+            <small>10 Sep 2014</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2014/01/02/introducing-lanyon/">
+            Introducing Lanyon
+            <small>02 Jan 2014</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2014/01/01/example-content/">
+            Example content
+            <small>01 Jan 2014</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</div>
+
+      </div>
+    </div>
+
+    <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+
+
+    <script>
+      (function(document) {
+        var toggle = document.querySelector('.sidebar-toggle');
+        var sidebar = document.querySelector('#sidebar');
+        var checkbox = document.querySelector('#sidebar-checkbox');
+
+        document.addEventListener('click', function(e) {
+          var target = e.target;
+
+          if(!checkbox.checked ||
+             sidebar.contains(target) ||
+             (target === checkbox || target === toggle)) return;
+
+          checkbox.checked = false;
+        }, false);
+      })(document);
+    </script>
+  </body>
+</html>
